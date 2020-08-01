@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "411468451460",
+    "firebase_url": "https://techsyndica.firebaseio.com",
+    "project_id": "techsyndica",
+    "storage_bucket": "techsyndica.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:411468451460:android:9a5f7942a46ff548edbcd1",
+        "android_client_info": {
+          "package_name": "com.example.productivityapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "411468451460-g3fus04gok11jguf56ujaodmf2rd1133.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.productivityapp",
+            "certificate_hash": "10efadc6496e307de39f7b63d53faeacaefaf1b7"
+          }
+        },
+        {
+          "client_id": "411468451460-fu9k3g79anq2gp4vl5668rchhv3pughd.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCpOoJx_Y3ZUgiZB1PsJNDz2TahtJWsGHw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "411468451460-fu9k3g79anq2gp4vl5668rchhv3pughd.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
