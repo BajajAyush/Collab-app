@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:productivityapp/views/DashboardScreen.dart';
 import 'package:productivityapp/views/constants_color.dart';
+import 'package:productivityapp/views/personalChat_dashboard.dart';
 import 'package:productivityapp/views/teams.dart';
 import 'package:productivityapp/views/User_profile.dart';
 Widget appBarMain(BuildContext context){
@@ -33,7 +34,13 @@ Widget bottomNavBar(BuildContext context,Color button1,Color button2,Color butto
           onPressed: () {Navigator.pushReplacement(context,MaterialPageRoute(
             builder:(context) => Teams(),));},
         ),
-
+        IconButton(
+          icon: Image.asset('assets/message.png',),
+          onPressed: () {
+            Navigator.push(context,MaterialPageRoute(
+              builder:(context) => ChatRoom(),));
+          },
+        ),
         IconButton(
           icon: Image.asset('assets/profile_icon.png',color: button3,),
           onPressed: () {
@@ -41,6 +48,8 @@ Widget bottomNavBar(BuildContext context,Color button1,Color button2,Color butto
               builder:(context) => Profile(),));
           },
         ),
+
+
       ],
     ),
   );

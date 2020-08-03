@@ -38,6 +38,9 @@ dependencies:
   flutter_swiper: ^1.1.6
   line_awesome_flutter: ^1.0.1
   flutter_screenutil: ^1.0.2
+  material_design_icons_flutter: 4.0.5345
+  charts_flutter: ^0.9.0
+
 
 
 
@@ -48,6 +51,7 @@ dev_dependencies:
   flutter_launcher_icons: "^0.7.3"
 flutter_icons:
   android: "launcher_icon"
+  ios: true
   image_path: "assets/collab.png"
 
 # For information on the generic Dart part of this file, see the
@@ -118,4 +122,6 @@ flutter:
     - assets/search_icon.png
     - assets/navbar_team.png
     - assets/avatar.png
+    - assets/google.png
+    - assets/statistics.png
 

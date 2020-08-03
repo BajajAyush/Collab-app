@@ -89,12 +89,7 @@ class _CreateTeamState extends State<CreateTeam> {
                       padding: EdgeInsets.only(top: 3, left: 3),
                       decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(50),
-                          border: Border(
-                            bottom: BorderSide(color: Colors.black),
-                            top: BorderSide(color: Colors.black),
-                            left: BorderSide(color: Colors.black),
-                            right: BorderSide(color: Colors.black),
-                          )
+                          
                       ),
                       child: MaterialButton(
                         minWidth: double.infinity,
@@ -148,10 +143,11 @@ class _CreateTeamState extends State<CreateTeam> {
             fillColor: Colors.white.withOpacity(0.4),
             contentPadding: EdgeInsets.symmetric(vertical: 0, horizontal: 10),
             enabledBorder: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey[400])
+                borderSide: BorderSide(color: Colors.grey[400]),
+              borderRadius: BorderRadius.circular(50)
             ),
             border: OutlineInputBorder(
-                borderSide: BorderSide(color: Colors.grey[400])
+                borderRadius: BorderRadius.circular(50)
             ),
           ),
         ),

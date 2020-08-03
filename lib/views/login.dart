@@ -36,25 +36,25 @@ class _LoginPageState extends State<LoginPage> {
 
       authMethods.signInWithEmailAndPassword(EmailEditingController.text, PasswordEditingController.text)
           .then((value){//print("${value.uid}");
-            if(value != null) {
-              dataBaseMethods.getUserByUserEmail(EmailEditingController.text)
+        if(value != null) {
+          dataBaseMethods.getUserByUserEmail(EmailEditingController.text)
               .then((val){
-                  snapshotUserInfo = val;
-                  HelperFunctions.saveUserNameSharedPreference(snapshotUserInfo.documents[0].data['name']);
-                  HelperFunctions.saveUserEmailSharedPreference(snapshotUserInfo.documents[0].data['email']);
-              });
-              HelperFunctions.saveUserLoggedInSharedPreference(true);
-              Navigator.pushReplacement(context, MaterialPageRoute(
-                  builder: (context) => Dashboard()
-              ));
-            }else{
-              setState(() {
-                _error = "  Either User does not exist or email or password is wrong";
-                isLoading = false;
+            snapshotUserInfo = val;
+            HelperFunctions.saveUserNameSharedPreference(snapshotUserInfo.documents[0].data['name']);
+            HelperFunctions.saveUserEmailSharedPreference(snapshotUserInfo.documents[0].data['email']);
+          });
+          HelperFunctions.saveUserLoggedInSharedPreference(true);
+          Navigator.pushReplacement(context, MaterialPageRoute(
+              builder: (context) => Dashboard()
+          ));
+        }else{
+          setState(() {
+            _error = "  Either User does not exist or email or password is wrong";
+            isLoading = false;
 
-              });
+          });
 
-            }
+        }
       });
 
     }
@@ -101,9 +101,9 @@ class _LoginPageState extends State<LoginPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
 
-                              Text("Collab.io", style: TextStyle(
-                                fontSize: 30,
-                                fontWeight: FontWeight.bold
+                              Text("Unfrustr8", style: TextStyle(
+                                  fontSize: 30,
+                                  fontWeight: FontWeight.bold
                               ),),
                             ],
                           ),
@@ -188,7 +188,7 @@ class _LoginPageState extends State<LoginPage> {
                       mainAxisAlignment: MainAxisAlignment.end,
                       children: <Widget>[
                         Text("Forgot Password?",
-                        style: TextStyle(decoration: TextDecoration.underline),
+                          style: TextStyle(decoration: TextDecoration.underline),
                         ),
 
                       ],
@@ -198,17 +198,17 @@ class _LoginPageState extends State<LoginPage> {
                   FadeAnimation(1.4, Padding(
                     padding: EdgeInsets.symmetric(horizontal: 40),
                     child: Container(
-                      padding: EdgeInsets.only(top: 3, left: 3),
+                        padding: EdgeInsets.only(top: 3, left: 3),
 
-                      child: SignInButtonBuilder(
-                        text: '           Sign in ',
-                        icon: Icons.lock_open,
-                        onPressed: () {signIn();},
-                        backgroundColor: Colors.blueGrey[700],
-                        shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(50)
-                        ),
-                      )
+                        child: SignInButtonBuilder(
+                          text: '           Sign in ',
+                          icon: Icons.lock_open,
+                          onPressed: () {signIn();},
+                          backgroundColor: Colors.blueGrey[700],
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50)
+                          ),
+                        )
                     ),
                   )),
 
@@ -216,17 +216,17 @@ class _LoginPageState extends State<LoginPage> {
                   FadeAnimation(1.4, Padding(
                     padding: EdgeInsets.symmetric(horizontal: 40),
                     child: Container(
-                      padding: EdgeInsets.only(top: 3, left: 3),
+                        padding: EdgeInsets.only(top: 3, left: 3),
 
-                      child: SignInButton(
-                        Buttons.Google,
-                        onPressed: () async{ await authMethods.signUpWithGoogle(context);},
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(50)
-                        ),
+                        child: SignInButton(
+                          Buttons.Google,
+                          onPressed: () async{ await authMethods.signUpWithGoogle(context);},
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(50)
+                          ),
 
 
-                      )
+                        )
                     ),
                   )),
 
@@ -240,8 +240,8 @@ class _LoginPageState extends State<LoginPage> {
                         GestureDetector(
 
                           onTap: (){
-                          widget.toggle();
-                        },
+                            widget.toggle();
+                          },
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Text("Register Now",style: TextStyle(
@@ -260,10 +260,10 @@ class _LoginPageState extends State<LoginPage> {
             FadeAnimation(1.2, Container(
               height: MediaQuery.of(context).size.height / 6,
               decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/background.png'),
-                  fit: BoxFit.cover
-                )
+                  image: DecorationImage(
+                      image: AssetImage('assets/background.png'),
+                      fit: BoxFit.cover
+                  )
               ),
             )),
           ],

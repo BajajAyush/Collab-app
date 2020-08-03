@@ -360,6 +360,18 @@ class _CallPageState extends State<CallPage> {
     });
     AgoraRtcEngine.enableLocalVideo(muted_camera);
   }
+  bool viewVisible = true;
+  void showWidget(){
+    setState(() {
+      viewVisible = true ;
+    });
+  }
+
+  void hideWidget(){
+    setState(() {
+      viewVisible = false ;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -370,7 +382,9 @@ class _CallPageState extends State<CallPage> {
           children: <Widget>[
             _viewRows(),
 
-            _toolbar(),
+
+          _toolbar(),
+
           ],
         ),
       ),

@@ -9,7 +9,7 @@ import 'package:productivityapp/services/database.dart';
 import 'package:productivityapp/views/DashboardScreen.dart';
 import 'package:productivityapp/views/animation/FadeAnimation.dart';
 import 'package:productivityapp/views/createTeams.dart';
-import 'package:productivityapp/views/search.dart';
+import 'package:productivityapp/views/search_add_members.dart';
 import 'package:productivityapp/views/teams_dashboard_screen.dart';
 import 'package:productivityapp/widgets/widget.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
@@ -46,42 +46,55 @@ class _TeamsState extends State<Teams> {
     dataBaseMethods.getUserTeamsByEmail(Constants.myEmail)
         .then((val){
           setState(() {
-           // print(val);
+           print(val);
             teamsSnapshot = val;
           });
     });
   }
   Widget TeamsList(){
-    return teamsSnapshot != null ? Expanded(
-      child: Swiper(
+    return teamsSnapshot != null ? Swiper(
 
 
-        itemBuilder: (BuildContext context,int index){
-              return TeamsTile(
-                TeamName: teamsSnapshot.documents[index].data["TeamName"],
-                Teamroomid : teamsSnapshot.documents[index].data["Teamroomid"]
-              );
-          },
-        itemCount: teamsSnapshot.documents.length,
-        pagination: new SwiperPagination(),
-        controller: new SwiperController(),
-        itemWidth: 300.0,
-        itemHeight: 400.0,
-        layout: SwiperLayout.STACK,
-        loop: false,
-        index: 0,
+      itemBuilder: (BuildContext context,int index){
+            return TeamsTile(
+              TeamName: teamsSnapshot.documents[index].data["TeamName"],
+              Teamroomid : teamsSnapshot.documents[index].data["Teamroomid"]
+            );
+        },
+      itemCount: teamsSnapshot.documents.length,
+      pagination: new SwiperPagination(),
+      controller: new SwiperController(),
+      itemWidth: 300.0,
+      itemHeight: MediaQuery.of(context).size.height/2,
+      layout: SwiperLayout.STACK,
+      loop: true,
+      index: 0,
 
 
-      ),
 
+    ):
+    FadeAnimation(
+      1.4,SizedBox(height: MediaQuery.of(context).size.height/2,child: Align(alignment:Alignment.bottomCenter,child: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: <Widget>[
 
-    ):Container(child:Text(""));
+          Text("Create a Team",style:  TextStyle(
+            fontFamily: 'Avenir',
+            fontSize: 34,
+            color: Colors.white.withOpacity(0.6),
+            fontWeight: FontWeight.w500,
+          ),),
+          Icon(Icons.subdirectory_arrow_right,color:const Color(0x7cdbf1ff) ,size: 34,),
+        ],
+      )),),
+    );
 
   }
 
 
   @override
   Widget build(BuildContext context) {
+    var ScreenSize = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: gradientEndColor,
       body: Container(
@@ -91,7 +104,9 @@ class _TeamsState extends State<Teams> {
                 begin: Alignment.topCenter,
                 end: Alignment.bottomCenter,
                 stops: [0.3, 0.7])),
+
         child:  Column(
+
           mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
               SizedBox(height: 100,),
@@ -120,7 +135,7 @@ class _TeamsState extends State<Teams> {
                 ),
               ),
               FadeAnimation(1.0, TeamsList()),
-              SizedBox(height: 100,)
+              Expanded(child: Container(),)
             ],
           ),
         ),
@@ -166,8 +181,8 @@ class TeamsTile extends StatelessWidget {
               );
             },
             child: SizedBox(
-              width:160.0,
-              height: 160.0,
+              width:140.0,
+              height: 140.0,
               child: Card(
 
                 color:  Colors.white.withOpacity(1),

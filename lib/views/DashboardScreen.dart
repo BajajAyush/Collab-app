@@ -6,6 +6,7 @@ import 'package:productivityapp/helper/helperfunctions.dart';
 import 'package:productivityapp/pages/index.dart';
 import 'package:productivityapp/services/auth.dart';
 import 'package:productivityapp/views/animation/FadeAnimation.dart';
+import 'package:productivityapp/views/personal_todo.dart';
 import 'package:productivityapp/views/pomodoro.dart';
 import 'package:productivityapp/views/teams.dart';
 import 'package:productivityapp/views/login.dart';
@@ -97,9 +98,9 @@ class _DashboardState extends State<Dashboard> {
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: <Widget>[
                                 GestureDetector(
-                                  onTap:(){
-
-                                  },
+                                  onTap:(){Navigator.push(context,MaterialPageRoute(
+                                      builder:(context) => PersonalTodo()),
+                                  );},
                                   child: Padding(
                                     padding: const EdgeInsets.all(8.0),
                                     child: Column(
