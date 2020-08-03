@@ -52,7 +52,7 @@ class _TeamsState extends State<Teams> {
     });
   }
   Widget TeamsList(){
-    return teamsSnapshot != null ? Swiper(
+    return teamsSnapshot.documents.length != 0 ? Swiper(
 
 
       itemBuilder: (BuildContext context,int index){
