@@ -211,4 +211,11 @@ getAllUserStats(String teamId){
         .where('users', arrayContains: itIsMyName)
         .snapshots();
   }
+  start_videoCall(String teamId,String Name){
+    Firestore.instance.collection("team")
+        .document(teamId)
+        .collection("VideoCall")
+        .add({"team":teamId,"user":Name});
+  }
+
 }

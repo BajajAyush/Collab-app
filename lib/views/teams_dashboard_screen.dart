@@ -20,7 +20,7 @@ import 'dart:async';
 import 'package:agora_rtc_engine/agora_rtc_engine.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:productivityapp/views/DashboardScreen.dart';
-
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:productivityapp/pages/call.dart';
 
 class Teams_detailed_view extends StatefulWidget {
@@ -29,6 +29,8 @@ class Teams_detailed_view extends StatefulWidget {
 }
 
 class _Teams_detailed_viewState extends State<Teams_detailed_view> {
+  final FirebaseMessaging _fcm = FirebaseMessaging();
+  DataBaseMethods dataBaseMethods = new DataBaseMethods();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -192,7 +194,11 @@ class _Teams_detailed_viewState extends State<Teams_detailed_view> {
 
 
                     GestureDetector(
-                      onTap: (){onJoin();},
+                      onTap: (){
+                        onJoin();
+                        DataBaseMethods().start_videoCall(Constants.Teamroomid, Constants.myName);
+                        _fcm.subscribeToTopic(Constants.Teamroomid.split("@")[0]+"videoCall");
+                        },
                       child: SizedBox(
                         width:160.0,
                         height: 160.0,

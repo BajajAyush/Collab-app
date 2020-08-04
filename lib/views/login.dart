@@ -101,7 +101,7 @@ class _LoginPageState extends State<LoginPage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
 
-                              Text("Unfrustr8", style: TextStyle(
+                              Text("Collab", style: TextStyle(
                                   fontSize: 30,
                                   fontWeight: FontWeight.bold
                               ),),

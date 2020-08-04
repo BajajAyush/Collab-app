@@ -127,7 +127,7 @@ class UserStats{
 
     user = map["user"],
 
-    percentage = map["completed"]/(map["assigned"]+0.1)*100;
+    percentage = map["assigned"]!=0?map["completed"]/(map["assigned"])*100:0.0;
   String toString() => "Record<$user:$percentage>";
 
 

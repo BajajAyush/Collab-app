@@ -16,6 +16,9 @@ import 'package:productivityapp/widgets/widget.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'constants_color.dart';
 import 'dart:io';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Chat extends StatefulWidget {
   final String chatRoomId;
 
@@ -28,8 +31,9 @@ class Chat extends StatefulWidget {
 class _ChatState extends State<Chat> {
 
   Stream<QuerySnapshot> chats;
+  final FirebaseMessaging _fcm = FirebaseMessaging();
   TextEditingController messageEditingController = new TextEditingController();
-
+  
   Widget chatMessages(){
     return StreamBuilder(
       stream: chats,
@@ -51,10 +55,12 @@ class _ChatState extends State<Chat> {
     if (messageEditingController.text.isNotEmpty) {
       Map<String, dynamic> chatMessageMap = {
         "sendBy": Constants.myName,
+        "SendByEmail":Constants.myEmail,
         "message": messageEditingController.text,
         'time': DateTime
             .now()
             .millisecondsSinceEpoch,
+        "chatRoom":widget.chatRoomId,
       };
 
       DataBaseMethods().addMessage(widget.chatRoomId, chatMessageMap);
@@ -72,6 +78,8 @@ class _ChatState extends State<Chat> {
         chats = val;
       });
     });
+    _fcm.subscribeToTopic(widget.chatRoomId);
+    
     super.initState();
   }
 

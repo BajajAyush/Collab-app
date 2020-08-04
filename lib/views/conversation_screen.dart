@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -22,6 +23,7 @@ class ConversationScreen extends StatefulWidget {
 }
 
 class _ConversationScreenState extends State<ConversationScreen> {
+  final FirebaseMessaging _fcm = FirebaseMessaging();
   DataBaseMethods dataBaseMethods = new DataBaseMethods();
   TextEditingController MessageTextEditingController = new TextEditingController();
   ScrollController _scrollController = new ScrollController();
@@ -53,7 +55,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
   }
 
   sendMessage(){
-    dataBaseMethods.postConversationTeam(Constants.Teamroomid, {"message":MessageTextEditingController.text,"sendBy":Constants.myName,"time":DateTime.now().millisecondsSinceEpoch});
+    dataBaseMethods.postConversationTeam(Constants.Teamroomid, {"message":MessageTextEditingController.text,"sendBy":Constants.myName,"SendByEmail":Constants.myEmail,"time":DateTime.now().millisecondsSinceEpoch,"team":Constants.Teamroomid.split('@')[0]});
     MessageTextEditingController.text = "";
   }
 
@@ -66,6 +68,7 @@ class _ConversationScreenState extends State<ConversationScreen> {
       });
 
     });
+    _fcm.subscribeToTopic(Constants.Teamroomid.split("@")[0]);
     super.initState();
   }
 
